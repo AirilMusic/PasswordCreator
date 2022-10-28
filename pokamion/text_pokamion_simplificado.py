@@ -1,5 +1,6 @@
 import random
 import time
+# work in progress
 
 #pokemons:
 class chorizord():
