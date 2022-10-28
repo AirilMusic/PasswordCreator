@@ -2,6 +2,8 @@
 ## Made by Airil/Ainhoa/Ari (we are the same person)
 #28-10-2022
 
+# WORK IN PROGRESS
+
 # CARDS
 allPlaces = []
 allWeaphons = []
