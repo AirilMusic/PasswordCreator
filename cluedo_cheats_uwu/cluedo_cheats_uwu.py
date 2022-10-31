@@ -1,8 +1,6 @@
 #### CLUEDO CHEATS UWU ####
 ## Made by Airil/Ainhoa/Ari (we are the same person)
-#28-10-2022
-
-# WORK IN PROGRESS
+#28-10-2022  -->  31/10/2022
 
 # CARDS
 allPlaces = []
@@ -16,13 +14,17 @@ while True:
     else:
         allPlaces.append(add.lower())
 
+print("")
+
 while True:
     add = input("Add a weaphon (exit if there is no more): ")
     if add.lower() == "exit":
         break
     else:
         allWeaphons.append(add.lower())
-        
+
+print("")
+
 while True:
     add = input("Add a suspicious (exit if there is no more): ")
     if add.lower() == "exit":
@@ -37,7 +39,10 @@ for i in range(10):
     class player():
         name = str(i)
         
-        cards = []
+        place = ""
+        weaphon = ""
+        suspicious = ""
+        
         noCards = [] #cartas que no tiene el jugador
         
         posiblePlaces = []
@@ -54,13 +59,13 @@ for i in range(10):
     
     p.append(player)
     
-    for a in range (len(allPlaces)):
+    for a in range (len(allPlaces) - 1):
         p[i].placesProbabilitys.update({allPlaces[a]:0.0})
-    for a in range (len(allPlaces)):
+    for a in range (len(allWeaphons) - 1):
         p[i].weaphonsProbabilitys.update({allWeaphons[a]:0.0})
-    for a in range (len(allWeaphons)):
+    for a in range (len(allSuspicious) - 1):
         p[i].suspiciousProbabilitys.update({allSuspicious[a]:0.0})
-    
+
 player1 = p[0]
 player2 = p[1]
 player3 = p[2]
@@ -71,6 +76,8 @@ player7 = p[6]
 player8 = p[7]
 player9 = p[8]
 player10 = p[9]
+
+print("")
 
 while True:
     playersNumT = input("How many players are playing (Max: 10): ")
@@ -100,6 +107,55 @@ player9.name = names[8]
 player10.name = names[9]
 
 playerList = (player1, player2, player3, player4, player5, player6, player8, player9, player10)
+
+# UPDATE PROBABILITYS
+def updateProbabilitys():
+    for i in range(playersNum):
+        playerList[i].posiblePlaces = [] #reset
+        
+        #primero reducimos la lista de posibles cartas que tenga cada jugador
+        if playerList[i].place != "":
+            playerList[i].posiblePlaces = [playerList[i].place]
+        else:
+            for a in range(len(allPlaces)):
+                if allPlaces[a] in playerList[i].noCards:
+                    pass
+                else:
+                    playerList[i].posiblePlaces.append(allPlaces[a])
+
+        if playerList[i].weaphon != "":
+            playerList[i].posibleWeaphons = [playerList[i].place]
+        else:
+            for i in range(len(allWeaphons)):
+                if allWeaphons[a] in playerList[i].noCards:
+                    pass
+                else:
+                    playerList[i].posibleWeaphons.append(allWeaphons[a])
+        
+        if playerList[i].suspicious != "":
+            playerList[i].posibleSuspicious = [playerList[i].suspicious]
+        else:
+            for i in range(len(allSuspicious)):
+                if allSuspicious[a] in playerList[i].noCards:
+                    pass
+                else:
+                    playerList[i].posibleSuspicious.append(allSuspicious[a])
+                    
+        ## ahora quedaria lo de las probabilidade y eso, pero eso es lo siguiente
+        
+        
+        
+        
+        
+        
+        
+        
+        ##############################################################################################################
+
+updateProbabilitys() # this is for set all stadistics to 0 or initial probabilitys...
+print(player1.posiblePlaces)
+
+print("")
 
 # OTHER STADISTICS
 class suspicious():
@@ -181,25 +237,25 @@ while True:
                         
                 else:
                     if selectPlayer.lower() == player1.name:
-                        print(player1.probabilitys)
+                        print("Most probable place: ", player1.mostProbablePlace, "\nMost probable weaphon: ", player1.mostProbableWeaphon, "\nMost probable suspicious: ", player1.mostProbableSuspicious)
                     elif selectPlayer.lower() == player2.name:
-                        print(player2.probabilitys)
+                        print("Most probable place: ", player2.mostProbablePlace, "\nMost probable weaphon: ", player2.mostProbableWeaphon, "\nMost probable suspicious: ", player2.mostProbableSuspicious)
                     elif selectPlayer.lower() == player3.name:
-                        print(player3.probabilitys)
+                        print("Most probable place: ", player3.mostProbablePlace, "\nMost probable weaphon: ", player3.mostProbableWeaphon, "\nMost probable suspicious: ", player3.mostProbableSuspicious)
                     elif selectPlayer.lower() == player4.name:
-                        print(player4.probabilitys)
+                        print("Most probable place: ", player4.mostProbablePlace, "\nMost probable weaphon: ", player4.mostProbableWeaphon, "\nMost probable suspicious: ", player4.mostProbableSuspicious)
                     elif selectPlayer.lower() == player5.name:
-                        print(player5.probabilitys)
+                        print("Most probable place: ", player5.mostProbablePlace, "\nMost probable weaphon: ", player5.mostProbableWeaphon, "\nMost probable suspicious: ", player5.mostProbableSuspicious)
                     elif selectPlayer.lower() == player6:
-                        print(player6.probabilitys)
+                        print("Most probable place: ", player6.mostProbablePlace, "\nMost probable weaphon: ", player6.mostProbableWeaphon, "\nMost probable suspicious: ", player6.mostProbableSuspicious)
                     elif selectPlayer.lower() == player7:
-                        print(player7.probabilitys)
+                        print("Most probable place: ", player7.mostProbablePlace, "\nMost probable weaphon: ", player7.mostProbableWeaphon, "\nMost probable suspicious: ", player7.mostProbableSuspicious)
                     elif selectPlayer.lower() == player8:
-                        print(player8.probabilitys)
+                        print("Most probable place: ", player8.mostProbablePlace, "\nMost probable weaphon: ", player8.mostProbableWeaphon, "\nMost probable suspicious: ", player8.mostProbableSuspicious)
                     elif selectPlayer.lower() == player9:
-                        print(player9.probabilitys)
+                        print("Most probable place: ", player9.mostProbablePlace, "\nMost probable weaphon: ", player9.mostProbableWeaphon, "\nMost probable suspicious: ", player9.mostProbableSuspicious)
                     elif selectPlayer.lower() == player10:
-                        print(player10.probabilitys)
+                        print("Most probable place: ", player10.mostProbablePlace, "\nMost probable weaphon: ", player10.mostProbableWeaphon, "\nMost probable suspicious: ", player10.mostProbableSuspicious)
                     if selectPlayer.lower() == "suspicious":
                         pass
                         ####################################### falta el sospechoso
