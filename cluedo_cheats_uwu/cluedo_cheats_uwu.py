@@ -2,6 +2,8 @@
 ## Made by Airil/Ainhoa/Ari (we are the same person, you can use the name that you prefere)
 #28-10-2022
 
+### WOR IN PROGRESS ###
+
 # CARDS
 allPlaces = []
 allWeaphons = []
