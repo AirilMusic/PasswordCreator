@@ -158,7 +158,7 @@ def updateProbabilitys():
         for a in range(len(playerList[i].posiblePlaces)): #calculate probability
             suma = 0.0
             for u in range(playersNum):
-                if playerList[i].posiblePlaces[a] in playerList[u].posiblePlaces: # todos son de 0 a 1, pero si no esta sera 0, porque no sumara nada, por lo tanto luego tenemos que hacer suma/playersNum
+                if playerList[i].posiblePlaces[a] in playerList[u].posiblePlaces:
                     suma += (1/len(playerList[u].posiblePlaces))
                     
             suma = 1 - (suma/playersNum)
