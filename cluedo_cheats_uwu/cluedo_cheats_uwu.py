@@ -3,9 +3,6 @@
 #28-10-2022
 
 # CARDS
-from xml.dom.expatbuilder import parseFragmentString
-
-
 allPlaces = []
 allWeaphons = []
 allSuspicious = []
@@ -184,7 +181,7 @@ def updateProbabilitys():
         for a in range(len(playerList[i].posibleWeaphons)): #calculate probability
             suma = 0.0
             for u in range(playersNum):
-                if playerList[i].posibleWeaphons[a] in playerList[u].posibleWeaphons: # todos son de 0 a 1, pero si no esta sera 0, porque no sumara nada, por lo tanto luego tenemos que hacer suma/playersNum
+                if playerList[i].posibleWeaphons[a] in playerList[u].posibleWeaphons:
                     suma += (1/len(playerList[u].posibleWeaphons))
                     
             suma = 1 - (suma/playersNum)
@@ -210,7 +207,7 @@ def updateProbabilitys():
         for a in range(len(playerList[i].posibleSuspicious)): #calculate probability
             suma = 0.0
             for u in range(playersNum):
-                if playerList[i].posibleSuspicious[a] in playerList[u].posibleSuspicious: # todos son de 0 a 1, pero si no esta sera 0, porque no sumara nada, por lo tanto luego tenemos que hacer suma/playersNum
+                if playerList[i].posibleSuspicious[a] in playerList[u].posibleSuspicious:
                     suma += (1/len(playerList[u].posibleSuspicious))
                     
             suma = 1 - (suma/playersNum)
