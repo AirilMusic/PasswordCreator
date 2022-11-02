@@ -117,7 +117,7 @@ def updateProbabilitys():
     for i in range(playersNum):
         playerList[i].posiblePlaces = [] #reset
         
-        #primero reducimos la lista de posibles cartas que tenga cada jugador
+        # First we reduce the list of possible cards that each player has
         if playerList[i].place != "":
             playerList[i].posiblePlaces = [playerList[i].place]
         else:
@@ -173,6 +173,8 @@ def updateProbabilitys():
             else:
                 probability -= suma
             suma1 += probability
+            if suma1 == 0:
+                suma1 = 1
             
             placesProbs.append(probability)
             
@@ -199,6 +201,8 @@ def updateProbabilitys():
             else:
                 probability -= suma
             suma2 += probability
+            if suma2 == 0:
+                suma2 == 1
             
             weaphonsProbs.append(probability)
         
@@ -225,6 +229,8 @@ def updateProbabilitys():
             else:
                 probability -= suma
             suma3 += probability
+            if suma3 == 0:
+                suma3 = 1
             
             suspiciousProbs.append(probability)
         
@@ -300,33 +306,50 @@ while True:
             if selectPlayer.isnumeric():
                 if int(selectPlayer) >= 1 and int(selectPlayer) <= (playersNum + 1):
                     isNum = True
-
-            if isName == True or isNum == True:
+                    
+            if (isName == True) or (isNum == True):
                 print("\nPROBABILITY:")
-                if selectPlayer.isnumeric():
+                
+                if isNum == True:
                     if int(selectPlayer) == 1:
                         print("Most probable place: ", player1.mostProbablePlace, "\nMost probable weaphon: ", player1.mostProbableWeaphon, "\nMost probable suspicious: ", player1.mostProbableSuspicious)
-                    elif int(selectPlayer) == 2 and playersNum < 1:
+                    elif int(selectPlayer) == 2 and (playersNum + 1) > 2:
                         print("Most probable place: ", player2.mostProbablePlace, "\nMost probable weaphon: ", player2.mostProbableWeaphon, "\nMost probable suspicious: ", player2.mostProbableSuspicious)
-                    elif int(selectPlayer) == 3 and playersNum < 2:
+                    elif int(selectPlayer) == 3 and (playersNum + 1) > 3:
                         print("Most probable place: ", player3.mostProbablePlace, "\nMost probable weaphon: ", player3.mostProbableWeaphon, "\nMost probable suspicious: ", player3.mostProbableSuspicious)
-                    elif int(selectPlayer) == 4 and playersNum < 3:
+                    elif int(selectPlayer) == 4 and (playersNum + 1) > 4:
                         print("Most probable place: ", player4.mostProbablePlace, "\nMost probable weaphon: ", player4.mostProbableWeaphon, "\nMost probable suspicious: ", player4.mostProbableSuspicious)
-                    elif int(selectPlayer) == 5 and playersNum < 4:
+                    elif int(selectPlayer) == 5 and (playersNum + 1) > 5:
                         print("Most probable place: ", player5.mostProbablePlace, "\nMost probable weaphon: ", player5.mostProbableWeaphon, "\nMost probable suspicious: ", player5.mostProbableSuspicious)
-                    elif int(selectPlayer) == 6 and playersNum < 5:
+                    elif int(selectPlayer) == 6 and (playersNum + 1) > 6:
                         print("Most probable place: ", player6.mostProbablePlace, "\nMost probable weaphon: ", player6.mostProbableWeaphon, "\nMost probable suspicious: ", player6.mostProbableSuspicious)
-                    elif int(selectPlayer) == 7 and playersNum < 6:
+                    elif int(selectPlayer) == 7 and (playersNum + 1) > 7:
                         print("Most probable place: ", player7.mostProbablePlace, "\nMost probable weaphon: ", player7.mostProbableWeaphon, "\nMost probable suspicious: ", player7.mostProbableSuspicious)
-                    elif int(selectPlayer) == 8 and playersNum < 7:
+                    elif int(selectPlayer) == 8 and (playersNum + 1) > 8:
                         print("Most probable place: ", player8.mostProbablePlace, "\nMost probable weaphon: ", player8.mostProbableWeaphon, "\nMost probable suspicious: ", player8.mostProbableSuspicious)
-                    elif int(selectPlayer) == 9 and playersNum < 8:
+                    elif int(selectPlayer) == 9 and (playersNum + 1) > 9:
                         print("Most probable place: ", player9.mostProbablePlace, "\nMost probable weaphon: ", player9.mostProbableWeaphon, "\nMost probable suspicious: ", player9.mostProbableSuspicious)
-                    elif int(selectPlayer) == 10 and playersNum < 9:
+                    elif int(selectPlayer) == 10 and (playersNum + 1) > 10:
                         print("Most probable place: ", player10.mostProbablePlace, "\nMost probable weaphon: ", player10.mostProbableWeaphon, "\nMost probable suspicious: ", player10.mostProbableSuspicious)
-                    if selectPlayer == playersNum + 1:
-                        pass
-                    ####################################### falta el sospechoso
+                    if int(selectPlayer) == playersNum + 1:
+                    ####################################### falta el sospechoso que son las cartas que menores probabilidades tengan (menor suma de las probabilidades de todos los jugadores)
+                        placeKey = ""
+                        placeValue = 0
+                        for i in range(len(allPlaces)):
+                            pass
+                        
+                        weaphonKey = ""
+                        wephonValue = 0
+                        for i in range(len(allWeaphons)):
+                            pass
+                            
+                        suspiciousKey = ""
+                        suspiciousValue = 0
+                        for i in range(len(allSuspicious)):
+                            pass
+                        
+                        print("SUSPICIOUS:", "\n    ·Crime Scene: ", placeKey, "\n    ·Murder Weapon: ", weaphonKey, "\n    ·Murderer: ", suspiciousKey)
+                    #######################################
                         
                 else:
                     if selectPlayer.lower() == player1.name:
