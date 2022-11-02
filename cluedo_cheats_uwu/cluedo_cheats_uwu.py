@@ -278,7 +278,7 @@ ask = askAbout()
 
 # OPTIONS
 while True:
-    option = input("What do you want to do? (show/add/ask/question)")
+    option = input("What do you want to do? (show/add/question)")
     
     if option.lower() == "help":
         print(
@@ -458,10 +458,96 @@ while True:
                 print("Shomething is WRONG!\nTry Again\n")
     
     elif option.lower() == "add":
-        pass
+        while True:
+            print("\nOPTIONS:", "\n    1-card that a player has", "\n    2-card that a player doesn't have")
+            option = input("Option: ")
+            
+            if option.lower() == "card that a player has" or option == "1":
+                print("Select Player:")
+                for i in range(playersNum):
+                    print(str(i + 1), "-", str(playerList[i].name))
+                
+                playeradd = input("Player: ")
+                
+                playNum = 1
+                
+                if playeradd.lower() == player1.name.lower() or playeradd == "1":
+                    playNum = 1
+                if playeradd.lower() == player2.name.lower() or playeradd == "2":
+                    playNum = 2
+                if playeradd.lower() == player3.name.lower() or playeradd == "3":
+                    playNum = 3
+                if playeradd.lower() == player4.name.lower() or playeradd == "4":
+                    playNum = 4
+                if playeradd.lower() == player5.name.lower() or playeradd == "5":
+                    playNum = 5
+                if playeradd.lower() == player6.name.lower() or playeradd == "6":
+                    playNum = 6
+                if playeradd.lower() == player7.name.lower() or playeradd == "7":
+                    playNum = 7
+                if playeradd.lower() == player8.name.lower() or playeradd == "8":
+                    playNum = 8
+                if playeradd.lower() == player9.name.lower() or playeradd == "9":
+                    playNum = 9
+                if playeradd.lower() == player10.name.lower() or playeradd == "10":
+                    playNum = 10
+                
+                card = input("\nCard: ")
+                category = input("Category of the card (place/weaphon/suspicious): \n")
+                
+                if category.lower() == "place":
+                    playerList[playNum - 1].place = card
+                elif category.lower() == "weaphon":
+                    playerList[playNum - 1].weaphon = card
+                elif category.lower() == "suspicious":
+                    playerList[playNum - 1].suspicious = card
+                else:
+                    print("Something is WRONG!\n Try again")
+                print("Card ", card , " has been added to player ", playerList[playNum -1].name)
+                break
+            
+            elif option.lower() == "card that a player doesn't have" or option == "2":
+                print("Select Player:")
+                for i in range(playersNum):
+                    print(str(i + 1), "-", str(playerList[i].name))
+                
+                playeradd = input("Player: ")
+                
+                playNum = 1
+                
+                if playeradd.lower() == player1.name.lower() or playeradd == "1":
+                    playNum = 1
+                if playeradd.lower() == player2.name.lower() or playeradd == "2":
+                    playNum = 2
+                if playeradd.lower() == player3.name.lower() or playeradd == "3":
+                    playNum = 3
+                if playeradd.lower() == player4.name.lower() or playeradd == "4":
+                    playNum = 4
+                if playeradd.lower() == player5.name.lower() or playeradd == "5":
+                    playNum = 5
+                if playeradd.lower() == player6.name.lower() or playeradd == "6":
+                    playNum = 6
+                if playeradd.lower() == player7.name.lower() or playeradd == "7":
+                    playNum = 7
+                if playeradd.lower() == player8.name.lower() or playeradd == "8":
+                    playNum = 8
+                if playeradd.lower() == player9.name.lower() or playeradd == "9":
+                    playNum = 9
+                if playeradd.lower() == player10.name.lower() or playeradd == "10":
+                    playNum = 10
+                
+                card = input("\nCard: ")
+                
+                playerList[playNum - 1].noCards.append(card)
+                
+                print("Card ", card , " has been added to player ", playerList[playNum -1].name)
+                break
+            
+            else:
+                print("Something is WRONG!\nTry Again\n")
     
     else:
-        print("Shomething is WRONG!\nTry Again")
+        print("Something is WRONG!\nTry Again")
     
     time.sleep(3)
     print("\n\n\n")
