@@ -331,25 +331,56 @@ while True:
                         print("Most probable place: ", player9.mostProbablePlace, "\nMost probable weaphon: ", player9.mostProbableWeaphon, "\nMost probable suspicious: ", player9.mostProbableSuspicious)
                     elif int(selectPlayer) == 10 and (playersNum + 1) > 10:
                         print("Most probable place: ", player10.mostProbablePlace, "\nMost probable weaphon: ", player10.mostProbableWeaphon, "\nMost probable suspicious: ", player10.mostProbableSuspicious)
-                    if int(selectPlayer) == playersNum + 1:
-                    ####################################### falta el sospechoso que son las cartas que menores probabilidades tengan (menor suma de las probabilidades de todos los jugadores)
+                    if int(selectPlayer) == playersNum + 1: ### SUSPICIOUS: CRIME SCENE, MURDER WEAPHON, MURDERER
                         placeKey = ""
-                        placeValue = 0
-                        for i in range(len(allPlaces)):
-                            pass
+                        placeValue = 1
+                        for a in range(len(allPlaces)):
+                            suma = 0
+                            for u in range(playersNum):
+                                try:
+                                    suma += playerList[u].placesProbabilitys[allPlaces[a]]
+                                except:
+                                    pass
+                                
+                            if suma < placeValue:
+                                placeValue = suma
+                                placeKey = allPlaces[a]
+                            suma = suma/playersNum
+                        placeValue = 1 - placeValue      
                         
                         weaphonKey = ""
-                        wephonValue = 0
+                        weaphonValue = 0
                         for i in range(len(allWeaphons)):
-                            pass
+                            suma = 0
+                            for u in range(playersNum):
+                                try:
+                                    suma += playerList[u].weaphonsProbabilitys[allWeaphons[a]]
+                                except:
+                                    pass
+                                
+                            if suma < weaphonValue:
+                                weaphonValue = suma
+                                weaphonKey = allWeaphons[a]
+                            suma = suma/playersNum
+                        weaphonValue = 1 - weaphonValue  
                             
                         suspiciousKey = ""
                         suspiciousValue = 0
                         for i in range(len(allSuspicious)):
-                            pass
+                            suma = 0
+                            for u in range(playersNum):
+                                try:
+                                    suma += playerList[u].suspiciousProbabilitys[allSuspicious[a]]
+                                except:
+                                    pass
+                                
+                            if suma < suspiciousValue:
+                                suspiciousValue = suma
+                                suspicousKey = allSuspicious[a]
+                            suma = suma/playersNum
+                        suspiciousValue = 1 - suspiciousValue  
                         
-                        print("SUSPICIOUS:", "\n    ·Crime Scene: ", placeKey, "\n    ·Murder Weapon: ", weaphonKey, "\n    ·Murderer: ", suspiciousKey)
-                    #######################################
+                        print("SUSPICIOUS:", "\n    ·Crime Scene: ", placeKey, " : ", placeValue, "\n    ·Murder Weapon: ", weaphonKey, " : ", weaphonValue, "\n    ·Murderer: ", suspiciousKey, " : ", suspiciousValue)
                         
                 else:
                     if selectPlayer.lower() == player1.name:
@@ -372,9 +403,56 @@ while True:
                         print("Most probable place: ", player9.mostProbablePlace, "\nMost probable weaphon: ", player9.mostProbableWeaphon, "\nMost probable suspicious: ", player9.mostProbableSuspicious)
                     elif selectPlayer.lower() == player10:
                         print("Most probable place: ", player10.mostProbablePlace, "\nMost probable weaphon: ", player10.mostProbableWeaphon, "\nMost probable suspicious: ", player10.mostProbableSuspicious)
-                    if selectPlayer.lower() == "suspicious":
-                        pass
-                        ####################################### falta el sospechoso
+                    if selectPlayer.lower() == "suspicious": ### SUSPICIOUS: CRIME SCENE, MURDER WEAPHON, MURDERER
+                        placeKey = ""
+                        placeValue = 1
+                        for a in range(len(allPlaces)):
+                            suma = 0
+                            for u in range(playersNum):
+                                try:
+                                    suma += playerList[u].placesProbabilitys[allPlaces[a]]
+                                except:
+                                    pass
+                                
+                            if suma < placeValue:
+                                placeValue = suma
+                                placeKey = allPlaces[a]
+                            suma = suma/playersNum
+                        placeValue = 1 - placeValue      
+                        
+                        weaphonKey = ""
+                        weaphonValue = 0
+                        for i in range(len(allWeaphons)):
+                            suma = 0
+                            for u in range(playersNum):
+                                try:
+                                    suma += playerList[u].weaphonsProbabilitys[allWeaphons[a]]
+                                except:
+                                    pass
+                                
+                            if suma < weaphonValue:
+                                weaphonValue = suma
+                                weaphonKey = allWeaphons[a]
+                            suma = suma/playersNum
+                        weaphonValue = 1 - weaphonValue  
+                            
+                        suspiciousKey = ""
+                        suspiciousValue = 0
+                        for i in range(len(allSuspicious)):
+                            suma = 0
+                            for u in range(playersNum):
+                                try:
+                                    suma += playerList[u].suspiciousProbabilitys[allSuspicious[a]]
+                                except:
+                                    pass
+                                
+                            if suma < suspiciousValue:
+                                suspiciousValue = suma
+                                suspicousKey = allSuspicious[a]
+                            suma = suma/playersNum
+                        suspiciousValue = 1 - suspiciousValue  
+                        
+                        print("SUSPICIOUS:", "\n    ·Crime Scene: ", placeKey, " : ", placeValue, "\n    ·Murder Weapon: ", weaphonKey, " : ", weaphonValue, "\n    ·Murderer: ", suspiciousKey, " : ", suspiciousValue)
                 
                 break
             
