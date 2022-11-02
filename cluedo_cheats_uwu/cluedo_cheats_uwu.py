@@ -112,13 +112,6 @@ player10.name = names[9]
 
 playerList = (player1, player2, player3, player4, player5, player6, player8, player9, player10)
 
-player1.noCards.append("a") ################################################ PRUEBAS
-player1.noCards.append("e") ################################################ PRUEBAS
-player2.noCards.append("a") ################################################ PRUEBAS
-player1.noCards.append("o") ################################################ PRUEBAS
-player3.noCards.append("u") ################################################ PRUEBAS
-player1.noCards.append("g") ################################################ PRUEBAS
-
 # UPDATE PROBABILITYS
 def updateProbabilitys():
     for i in range(playersNum):
@@ -383,7 +376,7 @@ while True:
                                 
                             if suma < suspiciousValue:
                                 suspiciousValue = suma
-                                suspicousKey = allSuspicious[a]
+                                suspiciousKey = allSuspicious[a]
                             suma = suma/playersNum
                         suspiciousValue = 1 - suspiciousValue  
                         
@@ -455,18 +448,14 @@ while True:
                                 
                             if suma < suspiciousValue:
                                 suspiciousValue = suma
-                                suspicousKey = allSuspicious[a]
+                                suspiciousKey = allSuspicious[a]
                             suma = suma/playersNum
                         suspiciousValue = 1 - suspiciousValue  
                         
                         print("SUSPICIOUS:", "\n    ·Crime Scene: ", placeKey, " : ", placeValue, "\n    ·Murder Weapon: ", weaphonKey, " : ", weaphonValue, "\n    ·Murderer: ", suspiciousKey, " : ", suspiciousValue)
-                
                 break
-            
             else:
                 print("Shomething is WRONG!\nTry Again\n")
-            
-        
     
     elif option.lower() == "add":
         pass
