@@ -2,7 +2,9 @@
 ## Made by Airil/Ainhoa/Ari (we are the same person, you can use the name that you prefere)
 #28-10-2022
 
-### WOR IN PROGRESS ###
+### WORK IN PROGRESS ###
+
+import time
 
 # CARDS
 allPlaces = []
@@ -231,8 +233,18 @@ def updateProbabilitys():
             playerList[i].suspiciousProbabilitys.update({playerList[i].posibleSuspicious[a] : cardProbability})
             
         # SET MOST PROBABLE CARDS
-
-
+        placeKey = max(playerList[i].placesProbabilitys)
+        placeValue = playerList[i].placesProbabilitys[placeKey]
+        
+        weaphonKey = max(playerList[i].weaphonsProbabilitys)
+        weaphonValue = playerList[i].weaphonsProbabilitys[weaphonKey]
+        
+        suspiciousKey = max(playerList[i].suspiciousProbabilitys)
+        suspiciousValue = playerList[i].suspiciousProbabilitys[suspiciousKey]
+        
+        playerList[i].mostProbablePlace = {placeKey:placeValue}
+        playerList[i].mostProbableWeaphon = {weaphonKey:weaphonValue}
+        playerList[i].mostProbableSuspicious = {suspiciousKey:suspiciousValue}
 
 updateProbabilitys() # this is for set all stadistics to 0 or initial probabilitys...
 
@@ -353,5 +365,6 @@ while True:
     
     else:
         print("Shomething is WRONG!\nTry Again")
-        
-    print("\n\n\n\n\n")
+    
+    time.sleep(3)
+    print("\n\n\n")
