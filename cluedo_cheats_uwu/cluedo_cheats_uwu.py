@@ -2,8 +2,6 @@
 ## Made by Airil/Ainhoa/Ari (we are the same person, you can use the name that you prefere)
 #28-10-2022
 
-### WORK IN PROGRESS ###
-
 import time
 
 # CARDS
@@ -113,9 +111,11 @@ player10.name = names[9]
 playerList = (player1, player2, player3, player4, player5, player6, player8, player9, player10)
 
 # UPDATE PROBABILITYS
-def updateProbabilitys():
+def updateProbabilitys(): #0 update all, 1 update place, 2 update weaphon, 3 update suspicious
     for i in range(playersNum):
         playerList[i].posiblePlaces = [] #reset
+        playerList[i].posibleWeaphons = []
+        playerList[i].posibleSuspicious = []
         
         # First we reduce the list of possible cards that each player has
         if playerList[i].place != "":
@@ -128,7 +128,7 @@ def updateProbabilitys():
                     playerList[i].posiblePlaces.append(allPlaces[a])
 
         if playerList[i].weaphon != "":
-            playerList[i].posibleWeaphons = [playerList[i].place]
+            playerList[i].posibleWeaphons = [playerList[i].weaphon]
         else:
             for a in range(len(allWeaphons)):
                 if allWeaphons[a] in playerList[i].noCards:
@@ -154,103 +154,114 @@ def updateProbabilitys():
         # asi que ahora podriamos hacer (sumaMaxima - suma) y ahi tendriamos la probabilidad, luego con una regla de tres ((1 * sumaPcarta) / sumaDeSumasDelJugador)
         
         ##############################################################################################################
-        suma1 = 0
-        placesProbs = []
-        for a in range(len(playerList[i].posiblePlaces)): #calculate probability
-            suma = 0.0
-            for u in range(playersNum):
-                if playerList[i].posiblePlaces[a] in playerList[u].posiblePlaces:
-                    suma += (1/len(playerList[u].posiblePlaces))
-                    
-            suma = 1 - (suma/playersNum)
-            probability = 1/len(playerList[i].posiblePlaces)
-            
-            if len(playerList[i].noCards) > 0:
-                if probability > suma:
+        if playerList[i].place == "":
+            suma1 = 0
+            placesProbs = []
+            for a in range(len(playerList[i].posiblePlaces)): #calculate probability
+                suma = 0.0
+                for u in range(playersNum):
+                    if playerList[i].posiblePlaces[a] in playerList[u].posiblePlaces:
+                        suma += (1/len(playerList[u].posiblePlaces))
+                        
+                suma = 1 - (suma/playersNum)
+                probability = 1/len(playerList[i].posiblePlaces)
+                
+                if len(playerList[i].noCards) > 0:
+                    if probability > suma:
+                        probability -= suma
+                    if probability < 0:
+                        probability = 0.01
+                else:
                     probability -= suma
-                if probability < 0:
-                   probability = 0.01
-            else:
-                probability -= suma
-            suma1 += probability
-            if suma1 == 0:
-                suma1 = 1
+                suma1 += probability
+                if suma1 == 0:
+                    suma1 = 1
+                
+                placesProbs.append(probability)
+                
+            for a in range(len(playerList[i].posiblePlaces)): #round to 0-1
+                cardProbability = placesProbs[a]/suma1
+                playerList[i].placesProbabilitys.update({playerList[i].posiblePlaces[a] : cardProbability})
+        else:
+            playerList[i].mostProbablePlace = {playerList[i].place:1}
             
-            placesProbs.append(probability)
-            
-        for a in range(len(playerList[i].posiblePlaces)): #round to 0-1
-            cardProbability = placesProbs[a]/suma1
-            playerList[i].placesProbabilitys.update({playerList[i].posiblePlaces[a] : cardProbability})
-        
-        suma2 = 0
-        weaphonsProbs = []
-        for a in range(len(playerList[i].posibleWeaphons)): #calculate probability
-            suma = 0.0
-            for u in range(playersNum):
-                if playerList[i].posibleWeaphons[a] in playerList[u].posibleWeaphons:
-                    suma += (1/len(playerList[u].posibleWeaphons))
-                    
-            suma = 1 - (suma/playersNum)
-            probability = 1/len(playerList[i].posibleWeaphons)
-            
-            if len(playerList[i].noCards) > 0:
-                if probability > suma:
+        if playerList[i].weaphon == "":
+            suma2 = 0
+            weaphonsProbs = []
+            for a in range(len(playerList[i].posibleWeaphons)): #calculate probability
+                suma = 0.0
+                for u in range(playersNum):
+                    if playerList[i].posibleWeaphons[a] in playerList[u].posibleWeaphons:
+                        suma += (1/len(playerList[u].posibleWeaphons))
+                        
+                suma = 1 - (suma/playersNum)
+                probability = 1/len(playerList[i].posibleWeaphons)
+                
+                if len(playerList[i].noCards) > 0:
+                    if probability > suma:
+                        probability -= suma
+                    if probability < 0:
+                        probability = 0.01
+                else:
                     probability -= suma
-                if probability < 0:
-                   probability = 0.01
-            else:
-                probability -= suma
-            suma2 += probability
-            if suma2 == 0:
-                suma2 = 1
+                suma2 += probability
+                if suma2 == 0:
+                    suma2 = 1
+                
+                weaphonsProbs.append(probability)
             
-            weaphonsProbs.append(probability)
-        
-        for a in range(len(playerList[i].posibleWeaphons)): #round to 0-1
-            cardProbability = weaphonsProbs[a]/suma2
-            playerList[i].weaphonsProbabilitys.update({playerList[i].posibleWeaphons[a] : cardProbability})
-        
-        suma3 = 0
-        suspiciousProbs = []
-        for a in range(len(playerList[i].posibleSuspicious)): #calculate probability
-            suma = 0.0
-            for u in range(playersNum):
-                if playerList[i].posibleSuspicious[a] in playerList[u].posibleSuspicious:
-                    suma += (1/len(playerList[u].posibleSuspicious))
-                    
-            suma = 1 - (suma/playersNum)
-            probability = 1/len(playerList[i].posibleSuspicious)
+            for a in range(len(playerList[i].posibleWeaphons)): #round to 0-1
+                cardProbability = weaphonsProbs[a]/suma2
+                playerList[i].weaphonsProbabilitys.update({playerList[i].posibleWeaphons[a] : cardProbability})
+        else:
+            playerList[i].mostProbableWeaphon = {playerList[i].weaphon:1}
             
-            if len(playerList[i].noCards) > 0:
-                if probability > suma:
+        if playerList[i].suspicious == "":
+            suma3 = 0
+            suspiciousProbs = []
+            for a in range(len(playerList[i].posibleSuspicious)): #calculate probability
+                suma = 0.0
+                for u in range(playersNum):
+                    if playerList[i].posibleSuspicious[a] in playerList[u].posibleSuspicious:
+                        suma += (1/len(playerList[u].posibleSuspicious))
+                        
+                suma = 1 - (suma/playersNum)
+                probability = 1/len(playerList[i].posibleSuspicious)
+                
+                if len(playerList[i].noCards) > 0:
+                    if probability > suma:
+                        probability -= suma
+                    if probability < 0:
+                        probability = 0.01
+                else:
                     probability -= suma
-                if probability < 0:
-                   probability = 0.01
-            else:
-                probability -= suma
-            suma3 += probability
-            if suma3 == 0:
-                suma3 = 1
+                suma3 += probability
+                if suma3 == 0:
+                    suma3 = 1
+                
+                suspiciousProbs.append(probability)
             
-            suspiciousProbs.append(probability)
-        
-        for a in range(len(playerList[i].posibleSuspicious)): #round to 0-1
-            cardProbability = suspiciousProbs[a]/suma3
-            playerList[i].suspiciousProbabilitys.update({playerList[i].posibleSuspicious[a] : cardProbability})
-            
+            for a in range(len(playerList[i].posibleSuspicious)): #round to 0-1
+                cardProbability = suspiciousProbs[a]/suma3
+                playerList[i].suspiciousProbabilitys.update({playerList[i].posibleSuspicious[a] : cardProbability})
+        else:
+            playerList[i].mostProbableSuspicious = {playerList[i].suspicious:1}
+                
         # SET MOST PROBABLE CARDS
-        placeKey = max(playerList[i].placesProbabilitys)
-        placeValue = playerList[i].placesProbabilitys[placeKey]
+        if playerList[i].place == "":
+            placeKey = max(playerList[i].placesProbabilitys)
+            placeValue = playerList[i].placesProbabilitys[placeKey]
+            playerList[i].mostProbablePlace = {placeKey:placeValue}
         
-        weaphonKey = max(playerList[i].weaphonsProbabilitys)
-        weaphonValue = playerList[i].weaphonsProbabilitys[weaphonKey]
+        if playerList[i].weaphon == "":
+            weaphonKey = max(playerList[i].weaphonsProbabilitys)
+            weaphonValue = playerList[i].weaphonsProbabilitys[weaphonKey]
+            playerList[i].mostProbableWeaphon = {weaphonKey:weaphonValue}
         
-        suspiciousKey = max(playerList[i].suspiciousProbabilitys)
-        suspiciousValue = playerList[i].suspiciousProbabilitys[suspiciousKey]
-        
-        playerList[i].mostProbablePlace = {placeKey:placeValue}
-        playerList[i].mostProbableWeaphon = {weaphonKey:weaphonValue}
-        playerList[i].mostProbableSuspicious = {suspiciousKey:suspiciousValue}
+        if playerList[i].suspicious == "":
+            suspiciousKey = max(playerList[i].suspiciousProbabilitys)
+            suspiciousValue = playerList[i].suspiciousProbabilitys[suspiciousKey]
+            playerList[i].mostProbableSuspicious = {suspiciousKey:suspiciousValue}
 
 updateProbabilitys() # this is for set all stadistics to 0 or initial probabilitys...
 
@@ -491,19 +502,23 @@ while True:
                 if playeradd.lower() == player10.name.lower() or playeradd == "10":
                     playNum = 10
                 
-                card = input("\nCard: ")
+                card = input("\nCard: ").strip()
                 category = input("Category of the card (place/weaphon/suspicious): \n")
                 
                 if category.lower() == "place":
                     playerList[playNum - 1].place = card
+                    print("Card ", card , " has been added to player ", playerList[playNum -1].name)
+                    updateProbabilitys()
                 elif category.lower() == "weaphon":
                     playerList[playNum - 1].weaphon = card
+                    print("Card ", card , " has been added to player ", playerList[playNum -1].name)
+                    updateProbabilitys()
                 elif category.lower() == "suspicious":
                     playerList[playNum - 1].suspicious = card
+                    print("Card ", card , " has been added to player ", playerList[playNum -1].name)
+                    updateProbabilitys()
                 else:
                     print("Something is WRONG!\n Try again")
-                print("Card ", card , " has been added to player ", playerList[playNum -1].name)
-                updateProbabilitys()
                 break
             
             elif option.lower() == "card that a player doesn't have" or option == "2":
@@ -541,7 +556,7 @@ while True:
                 playerList[playNum - 1].noCards.append(card)
 
                 print("Card ", card , " has been added to player ", playerList[playNum -1].name)
-                updateProbabilitys()
+                updateProbabilitys()                    
                 break
             
             else:
