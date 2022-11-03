@@ -184,6 +184,7 @@ def updateProbabilitys(): #0 update all, 1 update place, 2 update weaphon, 3 upd
                 playerList[i].placesProbabilitys.update({playerList[i].posiblePlaces[a] : cardProbability})
         else:
             playerList[i].mostProbablePlace = {playerList[i].place:1}
+            allPlaces.remove(playerList[i].place)
             
         if playerList[i].weaphon == "":
             suma2 = 0
@@ -215,6 +216,7 @@ def updateProbabilitys(): #0 update all, 1 update place, 2 update weaphon, 3 upd
                 playerList[i].weaphonsProbabilitys.update({playerList[i].posibleWeaphons[a] : cardProbability})
         else:
             playerList[i].mostProbableWeaphon = {playerList[i].weaphon:1}
+            allWeaphons.remove(playerList[i].weaphon)
             
         if playerList[i].suspicious == "":
             suma3 = 0
@@ -246,6 +248,7 @@ def updateProbabilitys(): #0 update all, 1 update place, 2 update weaphon, 3 upd
                 playerList[i].suspiciousProbabilitys.update({playerList[i].posibleSuspicious[a] : cardProbability})
         else:
             playerList[i].mostProbableSuspicious = {playerList[i].suspicious:1}
+            allSuspicious.remove(playerList[i].suspicious)
                 
         # SET MOST PROBABLE CARDS
         if playerList[i].place == "":
