@@ -267,6 +267,7 @@ def updateProbabilitys(): #0 update all, 1 update place, 2 update weaphon, 3 upd
             playerList[i].mostProbableSuspicious = {suspiciousKey:suspiciousValue}
 
 updateProbabilitys() # this is for set all stadistics to 0 or initial probabilitys...
+
 print("")
 
 # OPTIONS
