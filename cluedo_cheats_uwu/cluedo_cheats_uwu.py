@@ -202,7 +202,7 @@ def updateProbabilitys():
                 probability -= suma
             suma2 += probability
             if suma2 == 0:
-                suma2 == 1
+                suma2 = 1
             
             weaphonsProbs.append(probability)
         
@@ -278,14 +278,13 @@ ask = askAbout()
 
 # OPTIONS
 while True:
-    option = input("What do you want to do? (show/add/question)")
+    option = input("What do you want to do? (show/add/help)")
     
     if option.lower() == "help":
         print(
             "\nHELP:"
             "'show' to see the probabilitys of a player",
             "\n'add' to add a information of a player",
-            "\n'question' best question about suspicious, weaphon and place"
         )
     
     elif option.lower() == "show":
@@ -504,6 +503,7 @@ while True:
                 else:
                     print("Something is WRONG!\n Try again")
                 print("Card ", card , " has been added to player ", playerList[playNum -1].name)
+                updateProbabilitys()
                 break
             
             elif option.lower() == "card that a player doesn't have" or option == "2":
@@ -539,8 +539,9 @@ while True:
                 card = input("\nCard: ")
                 
                 playerList[playNum - 1].noCards.append(card)
-                
+
                 print("Card ", card , " has been added to player ", playerList[playNum -1].name)
+                updateProbabilitys()
                 break
             
             else:
@@ -550,4 +551,12 @@ while True:
         print("Something is WRONG!\nTry Again")
     
     time.sleep(3)
-    print("\n\n\n")
+    print("")
+    time.sleep(0.05)
+    print("")
+    time.sleep(0.025)
+    print("")
+    time.sleep(0.01)
+    print("")
+    time.sleep(0.005)
+    print("")
