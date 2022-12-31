@@ -42,7 +42,5 @@ while True:
         else:
             sid.append("0")
     
-    print("tid:", tid1, "\nhid:", hid, "\nlid:", lid, "\nsid:", sid)
-    
     sid = int(''.join(sid), 2)
     print("Shiny SID for pokemon with", pid0, "PID and", tid0, "TID:", sid, "\n\n\n\n\n")
