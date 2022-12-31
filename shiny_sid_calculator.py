@@ -7,7 +7,11 @@ while True:
         if n00 > 1:
             pid1 += i
         n00 += 1
-    
+    if len(pid1)/2 < 16:
+        zn = 16 - len(pid1)/2
+        for i in range(int(zn)):
+            pid1 = "00" + pid1
+            
     tid0 = int(input("Trainer ID: "))   
     tid=str(bin(tid0))
     n000 = 0
@@ -39,6 +43,8 @@ while True:
             sid.append("1")
         else:
             sid.append("0")
+    
+    print("tid:", tid1, "\nhid:", hid, "\nlid:", lid, "\nsid:", sid)
     
     sid = int(''.join(sid), 2)
     print("Shiny SID for pokemon with", pid0, "PID and", tid0, "TID:", sid, "\n\n\n\n\n")
