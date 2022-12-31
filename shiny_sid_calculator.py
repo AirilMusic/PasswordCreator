@@ -7,13 +7,7 @@ while True:
         if n00 > 1:
             pid1 += i
         n00 += 1
-        
-    if len(pid1)/2 < 16:
-        zn = 16 - len(pid1)/2
-        for i in range(int(zn)):
-            pid1 = "00" + pid1
-    
-    if len(pid1)%2 != 0:
+    while len(pid1)/2 < 16 or len(pid1)%2 != 0:
         pid1 = "0" + pid1
     
     tid0 = int(input("Trainer ID: "))   
