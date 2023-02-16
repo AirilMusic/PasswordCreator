@@ -1,5 +1,5 @@
 #### CLUEDO CHEATS UWU ####
-## Made by Airil/Ainhoa/Ari (we are the same person, you can use the name that you prefere)
+## Made by Airil
 #28-10-2022
 
 import time
