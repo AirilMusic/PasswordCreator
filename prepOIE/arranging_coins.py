@@ -8,10 +8,12 @@ class Solution:
         while n2 > 0:
             t += 1
             n2 -= t
+        print(t)
         
-        while t > 0 and n > 0:
-            n -= t
-            t -= 1
-            tr += 1
-        
+        for i in range(t):
+            n -= i+1
+            if n > 0:
+                tr += 1
+            else:
+                break
         return(tr)
