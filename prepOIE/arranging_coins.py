@@ -10,7 +10,7 @@ class Solution:
             t += 1
             n2 -= t
             tr0 += 1
-        print(t)
+
         if n  == (t * (t + 1))/2:
             return(tr0)
         else:        
