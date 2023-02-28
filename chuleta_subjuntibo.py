@@ -138,7 +138,7 @@ while True:
                 pertsona2 = input("Pertsona 2: ").lower()
                 if pertsona1 in c1 and pertsona2 in c2:
                     print(nnnis[c1.index(pertsona1)][c2.index(pertsona2)])
-                    pyperclip.copy(print(nnnis[c1.index(pertsona1)][c2.index(pertsona2)]))
+                    pyperclip.copy(nnnis[c1.index(pertsona1)][c2.index(pertsona2)])
             else:
                 pertsona1 = input("Pertsona 1: ").lower()
                 pertsona2 = input("Pertsona 2: ").lower()
