@@ -83,7 +83,7 @@ while True:
       "...\n"
       "...\n"
       "...\n\n"
-      "Algo salió mal, buscando una solución, por favor no cierre esta pestapa...")
+      "Algo salió mal, buscando una solución, por favor no cierre esta pestaña...")
     denbora = input("Denbora (Orainaldia/O, Iragana/I): ").lower()
     mota = input("Mota (Nor/N, Nor Nori/NN, Nor Nork/NNK, Nor Nori Nork/NNN): ").lower()
     
