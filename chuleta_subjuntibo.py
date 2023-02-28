@@ -1,4 +1,5 @@
 import pyperclip
+import os
 
 c1 = ("ni", "hi", "hura", "gu", "zu", "zuek", "haiek") #eje y
 c2 = ("niri", "hiri", "hari", "guri", "zuri", "zuei", "haiei") #eje x
@@ -67,6 +68,7 @@ nnnip = (("", "niezazkian/ziezanaten", "niezazkion", "", "niezazkizun", "niezazk
         ("ziezazkidaten", "ziezazkiaten/ziezazkinaten", "ziezazkioten", "ziezazkiguten", "ziezazkizuten", "ziezazkizueten", "ziezazkieten"))
 
 while True:
+    os.system('cls' if os.name == 'nt' else 'clear')
     denbora = input("Denbora (Orainaldia/O, Iragana/I): ").lower()
     mota = input("Mota (Nor/N, Nor Nori/NN, Nor Nork/NNK, Nor Nori Nork/NNN): ").lower()
     
