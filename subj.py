@@ -71,7 +71,6 @@ nnnip = (("", "niezazkian/ziezanaten", "niezazkion", "", "niezazkizun", "niezazk
 
 def update():
     os.system('cls' if os.name == 'nt' else 'clear')
-    #tapadera para que parezca que no es una chuleta sino una actualizacion (para profes que no saben de informatica)
     print("Obteniendo lista de actualizaciones...\n"
       "Leyendo lista de paquetes...\n"
       "Generando árbol de dependencias...\n"
