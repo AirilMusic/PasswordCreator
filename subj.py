@@ -1,5 +1,7 @@
 import pyperclip
 import os
+import subprocess
+import keyboard
 
 c1 = ("ni", "hi", "hura", "gu", "zu", "zuek", "haiek") #eje y
 c2 = ("niri", "hiri", "hari", "guri", "zuri", "zuei", "haiei") #eje x
@@ -67,7 +69,7 @@ nnnip = (("", "niezazkian/ziezanaten", "niezazkion", "", "niezazkizun", "niezazk
         ("zeniezazkidaten", "", "zeniezazkioten", "zeniezazkiguten", "", "", "zeniezazkieten"),
         ("ziezazkidaten", "ziezazkiaten/ziezazkinaten", "ziezazkioten", "ziezazkiguten", "ziezazkizuten", "ziezazkizueten", "ziezazkieten"))
 
-while True:
+def update():
     os.system('cls' if os.name == 'nt' else 'clear')
     #tapadera para que parezca que no es una chuleta sino una actualizacion (para profes que no saben de informatica)
     print("Obteniendo lista de actualizaciones...\n"
@@ -84,75 +86,103 @@ while True:
       "...\n"
       "...\n\n"
       "Algo salió mal, buscando una solución, por favor no cierre esta pestaña...")
-    denbora = input("Denbora (Orainaldia/O, Iragana/I): ").lower()
-    mota = input("Mota (Nor/N, Nor Nori/NN, Nor Nork/NNK, Nor Nori Nork/NNN): ").lower()
-    
-    if mota == "nor" or mota == "n":
-        if denbora == "orainaldia" or denbora == "o":
-            pertsona = input("Pertsona: ").lower()
-            if pertsona in c1:
-                print(no[c1.index(pertsona)])
-                pyperclip.copy(no[c1.index(pertsona)])
+
+while True:
+    update()
+    try:
+        #denbora = input("Denbora (Orainaldia/O, Iragana/I): ").lower()
+        #mota = input("Mota (Nor/N, Nor Nori/NN, Nor Nork/NNK, Nor Nori Nork/NNN): ").lower()
+        denbora = input().lower()
+        update()
+        pyperclip.copy("..")
+        mota = input().lower()
+        update()
+        pyperclip.copy(".")
         
-        elif denbora == "iragana" or denbora == "i":
-            pertsona = input("Pertsona: ").lower()
-            if pertsona in c1:
-                print(ni[c1.index(pertsona)])
-                pyperclip.copy(ni[c1.index(pertsona)])
-    
-    elif mota == "nor nori" or mota == "nn":
-        if denbora == "orainaldia" or denbora == "o":
-            pertsona1, pertsona2 = list((input("Pertsonak: ").lower()).split())
-            if pertsona1 in c1 and pertsona2 in c2:
-                print(nno[c1.index(pertsona1)][c2.index(pertsona2)])
-                pyperclip.copy(nno[c1.index(pertsona1)][c2.index(pertsona2)])
+        if mota == "nor" or mota == "n":
+            if denbora == "orainaldia" or denbora == "o":
+                #pertsona = input("Pertsona: ").lower()
+                pertsona = input().lower()
+                if pertsona in c1:
+                    print(no[c1.index(pertsona)])
+                    pyperclip.copy(no[c1.index(pertsona)])
+            
+            elif denbora == "iragana" or denbora == "i":
+                #pertsona = input("Pertsona: ").lower()
+                pertsona = input().lower()
+                if pertsona in c1:
+                    print(ni[c1.index(pertsona)])
+                    pyperclip.copy(ni[c1.index(pertsona)])
         
-        elif denbora == "iragana" or denbora == "i":
-            pertsona1, pertsona2 = list((input("Pertsonak: ").lower()).split())
-            if pertsona1 in c1 and pertsona2 in c2:
-                print(nni[c1.index(pertsona1)][c2.index(pertsona2)])
-                pyperclip.copy(nni[c1.index(pertsona1)][c2.index(pertsona2)])
-    
-    elif mota == "nor nork" or mota == "nnk":
-        if denbora == "orainaldia" or denbora == "o":
-            pertsona1, pertsona2 = list((input("Pertsonak: ").lower()).split())
-            if pertsona1 in c1 and pertsona2 in c2:
-                print(nnko[c1.index(pertsona1)][c2.index(pertsona2)])
-                pyperclip.copy(nnko[c1.index(pertsona1)][c2.index(pertsona2)])
+        elif mota == "nor nori" or mota == "nn":
+            if denbora == "orainaldia" or denbora == "o":
+                #pertsona1, pertsona2 = list((input("Pertsonak: ").lower()).split())
+                pertsona1, pertsona2 = list((input().lower()).split())
+                if pertsona1 in c1 and pertsona2 in c2:
+                    print(nno[c1.index(pertsona1)][c2.index(pertsona2)])
+                    pyperclip.copy(nno[c1.index(pertsona1)][c2.index(pertsona2)])
+            
+            elif denbora == "iragana" or denbora == "i":
+                #pertsona1, pertsona2 = list((input("Pertsonak: ").lower()).split())
+                pertsona1, pertsona2 = list((input().lower()).split())
+                if pertsona1 in c1 and pertsona2 in c2:
+                    print(nni[c1.index(pertsona1)][c2.index(pertsona2)])
+                    pyperclip.copy(nni[c1.index(pertsona1)][c2.index(pertsona2)])
         
-        elif denbora == "iragana" or denbora == "i":
-            pertsona1, pertsona2 = list((input("Pertsonak: ").lower()).split())
-            if pertsona1 in c1 and pertsona2 in c2:
-                print(nnki[c1.index(pertsona1)][c2.index(pertsona2)])
-                pyperclip.copy(nnki[c1.index(pertsona1)][c2.index(pertsona2)])
-    
-    elif mota == "nor nori nork" or mota == "nnn":
-        if denbora == "orainaldia" or denbora == "o":
-            p = input("Singularra(S)/Plurala(P): ").lower()
-            if p == "singularra" or p == "s":
-                pertsona1, pertsona2 = list((input("Pertsonak: ").lower()).split())
+        elif mota == "nor nork" or mota == "nnk":
+            if denbora == "orainaldia" or denbora == "o":
+                #pertsona1, pertsona2 = list((input("Pertsonak: ").lower()).split())
+                pertsona1, pertsona2 = list((input().lower()).split())
                 if pertsona1 in c1 and pertsona2 in c2:
-                    print(nnnos[c1.index(pertsona1)][c2.index(pertsona2)])
-                    pyperclip.copy(nnnos[c1.index(pertsona1)][c2.index(pertsona2)])
-            else:
-                pertsona1, pertsona2 = list((input("Pertsonak: ").lower()).split())
+                    print(nnko[c1.index(pertsona1)][c2.index(pertsona2)])
+                    pyperclip.copy(nnko[c1.index(pertsona1)][c2.index(pertsona2)])
+            
+            elif denbora == "iragana" or denbora == "i":
+                #pertsona1, pertsona2 = list((input("Pertsonak: ").lower()).split())
+                pertsona1, pertsona2 = list((input().lower()).split())
                 if pertsona1 in c1 and pertsona2 in c2:
-                    print(nnnop[c1.index(pertsona1)][c2.index(pertsona2)])
-                    pyperclip.copy(nnnop[c1.index(pertsona1)][c2.index(pertsona2)])
-                
-        elif denbora == "iragana" or denbora == "i":
-            p = input("Singularra(S)/Plurala(P): ").lower()
-            if p == "singularra" or p == "s":
-                pertsona1, pertsona2 = list((input("Pertsonak: ").lower()).split())
-                if pertsona1 in c1 and pertsona2 in c2:
-                    print(nnnis[c1.index(pertsona1)][c2.index(pertsona2)])
-                    pyperclip.copy(nnnis[c1.index(pertsona1)][c2.index(pertsona2)])
-            else:
-                pertsona1, pertsona2 = list((input("Pertsonak: ").lower()).split())
-                if pertsona1 in c1 and pertsona2 in c2:
-                    print(nnnip[c1.index(pertsona1)][c2.index(pertsona2)])
-                    pyperclip.copy(nnnip[c1.index(pertsona1)][c2.index(pertsona2)])
-    
-    t = input("[+] Press Enter to continue")
-    for i in range(30):
-        print("\n")
+                    print(nnki[c1.index(pertsona1)][c2.index(pertsona2)])
+                    pyperclip.copy(nnki[c1.index(pertsona1)][c2.index(pertsona2)])
+        
+        elif mota == "nor nori nork" or mota == "nnn":
+            update()
+            pyperclip.copy("..")
+            if denbora == "orainaldia" or denbora == "o":
+                #p = input("Singularra(S)/Plurala(P): ").lower()
+                p = input().lower()
+                update()
+                pyperclip.copy(".")
+                if p == "singularra" or p == "s":
+                    #pertsona1, pertsona2 = list((input("Pertsonak: ").lower()).split())
+                    pertsona1, pertsona2 = list((input().lower()).split())
+                    if pertsona1 in c1 and pertsona2 in c2:
+                        print(nnnos[c1.index(pertsona1)][c2.index(pertsona2)])
+                        pyperclip.copy(nnnos[c1.index(pertsona1)][c2.index(pertsona2)])
+                else:
+                    #pertsona1, pertsona2 = list((input("Pertsonak: ").lower()).split())
+                    pertsona1, pertsona2 = list((input().lower()).split())
+                    if pertsona1 in c1 and pertsona2 in c2:
+                        print(nnnop[c1.index(pertsona1)][c2.index(pertsona2)])
+                        pyperclip.copy(nnnop[c1.index(pertsona1)][c2.index(pertsona2)])
+                    
+            elif denbora == "iragana" or denbora == "i":
+                #p = input("Singularra(S)/Plurala(P): ").lower()
+                p = input().lower()
+                if p == "singularra" or p == "s":
+                    #pertsona1, pertsona2 = list((input("Pertsonak: ").lower()).split())
+                    pertsona1, pertsona2 = list((input().lower()).split())
+                    if pertsona1 in c1 and pertsona2 in c2:
+                        print(nnnis[c1.index(pertsona1)][c2.index(pertsona2)])
+                        pyperclip.copy(nnnis[c1.index(pertsona1)][c2.index(pertsona2)])
+                else:
+                    #pertsona1, pertsona2 = list((input("Pertsonak: ").lower()).split())
+                    pertsona1, pertsona2 = list((input().lower()).split())
+                    if pertsona1 in c1 and pertsona2 in c2:
+                        print(nnnip[c1.index(pertsona1)][c2.index(pertsona2)])
+                        pyperclip.copy(nnnip[c1.index(pertsona1)][c2.index(pertsona2)])
+        
+        if pyperclip.paste() == "." or pyperclip.paste() == ".." or pyperclip.paste() == "...":
+            pyperclip.copy("....")
+        #t = input("[+] Press Enter to continue")
+    except:
+        pass
