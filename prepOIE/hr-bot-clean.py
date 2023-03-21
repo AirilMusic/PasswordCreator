@@ -1,3 +1,6 @@
+#esta un poco cambiado porque de esta forma resuelve todo de un turno, pero pide que lo hagas paso a paso, asi que en hr lo tengo un poco cambiado
+#https://www.hackerrank.com/challenges/botclean/submissions/game/319883491
+
 def next_move(posr, posc, board): #posr: 0 posc: 0 board: [['b', 'd', '-', '-', '-'], ['-', 'd', '-', '-', '-'], ['-', '-', '-', 'd', '-'], ['-', '-', '-', 'd', '-'], ['-', '-', 'd', '-', 'd']]
     dpos = []
     for y in range(5):
