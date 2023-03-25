@@ -1,0 +1,105 @@
+<ui>:
+    MDScreen:
+        name: 'first_screen'
+        md_bg_color: 0.1, 0.7, 0.4, 0.1
+
+        ScrollView:
+            GridLayout:
+                cols: 1
+                padding: dp(10)
+                spacing: dp(10)
+                size_hint_y: None
+                height: self.minimum_height
+
+                Image:
+                    source: 'sniper.JPG'
+                    allow_stretch: True
+                    keep_ratio: False
+                    size_hint_y: None
+                    height: dp(120)
+
+                MDLabel:
+                    text: 'Distance:'
+                    halign: 'left'
+                    font_style: 'Subtitle1'
+                    theme_text_color: 'Primary'
+                
+                MDTextField:
+                    hint_text: 'Distance (in meters):'
+                    mode: "rectangle"
+                    input_filter: 'float'
+                    size_hint_y: None
+                    height: '40dp'
+                    id: distance
+
+                MDLabel:
+                    text: 'Rifle and ammunition:'
+                    halign: 'left'
+                    font_style: 'Subtitle1'
+                    theme_text_color: 'Primary'
+
+                MDTextField:
+                    hint_text: 'Bullet speed (in fps)'
+                    mode: "rectangle"
+                    input_filter: 'float'
+                    size_hint_y: None
+                    height: '40dp'
+                    id: speed
+
+                MDTextField:
+                    hint_text: 'Barrel length (in meters, example: 0.3)'
+                    mode: "rectangle"
+                    input_filter: 'float'
+                    size_hint_y: None
+                    height: '40dp'
+                    id: barrel_length
+
+                MDTextField:
+                    hint_text: 'Ammunition weight (in g):'
+                    mode: "rectangle"
+                    input_filter: 'float'
+                    size_hint_y: None
+                    height: '40dp'
+                    id: weight
+
+                MDTextField:
+                    hint_text: 'Ammunition diameter (in cm):'
+                    mode: "rectangle"
+                    input_filter: 'float'
+                    size_hint_y: None
+                    height: '40dp'
+                    id: diameter
+
+                MDLabel:
+                    text: 'Wind:'
+                    halign: 'left'
+                    font_style: 'Subtitle1'
+                    theme_text_color: 'Primary'
+
+                MDTextField:
+                    hint_text: 'Wind speed (in km/h):'
+                    mode: "rectangle"
+                    input_filter: 'float'
+                    size_hint_y: None
+                    height: '40dp'
+                    id: speed
+
+                MDTextField:
+                    hint_text: 'Wind Direction (90° Counterclockwise):'
+                    mode: "rectangle"
+                    input_filter: 'float'
+                    size_hint_y: None
+                    height: '40dp'
+                    id: speed
+
+                MDTextField:
+                    hint_text: 'Number of Trees or Buildings (obstacles for the wind):'
+                    mode: "rectangle"
+                    input_filter: 'float'
+                    size_hint_y: None
+                    height: '40dp'
+                    id: speed
+            
+                MDRaisedButton:
+                    text: "Calculate"
+                    on_release: root.calculate_data()
