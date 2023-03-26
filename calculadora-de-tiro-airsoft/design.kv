@@ -18,6 +18,60 @@
                     size_hint_y: None
                     height: dp(120)
 
+                MDBoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: '40dp'
+
+                    MDLabel:
+                        text: 'Time (s):'
+                        halign: 'left'
+                        font_style: 'Subtitle1'
+                        theme_text_color: 'Primary'
+                        size_hint_x: 0.3
+
+                    MDTextField:
+                        id: time
+                        mode: "rectangle"
+                        readonly: True
+                        size_hint_x: 0.7
+
+                MDBoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: '40dp'
+
+                    MDLabel:
+                        text: 'Height (m):'
+                        halign: 'left'
+                        font_style: 'Subtitle1'
+                        theme_text_color: 'Primary'
+                        size_hint_x: 0.3
+
+                    MDTextField:
+                        id: height
+                        mode: "rectangle"
+                        readonly: True
+                        size_hint_x: 0.7
+
+                MDBoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: '40dp'
+
+                    MDLabel:
+                        text: 'Horizontal (m, positive --> right, negative --> left ):'
+                        halign: 'left'
+                        font_style: 'Subtitle1'
+                        theme_text_color: 'Primary'
+                        size_hint_x: 0.3
+
+                    MDTextField:
+                        id: desplazamiento
+                        mode: "rectangle"
+                        readonly: True
+                        size_hint_x: 0.7
+
                 MDLabel:
                     text: 'Distance:'
                     halign: 'left'
@@ -82,15 +136,15 @@
                     input_filter: 'float'
                     size_hint_y: None
                     height: '40dp'
-                    id: speed
+                    id: wspeed
 
                 MDTextField:
-                    hint_text: 'Wind Direction (90° Counterclockwise):'
+                    hint_text: 'Wind Direction (0° Counterclockwise):'
                     mode: "rectangle"
                     input_filter: 'float'
                     size_hint_y: None
                     height: '40dp'
-                    id: speed
+                    id: wdirection
 
                 MDTextField:
                     hint_text: 'Number of Trees or Buildings (obstacles for the wind):'
@@ -98,7 +152,7 @@
                     input_filter: 'float'
                     size_hint_y: None
                     height: '40dp'
-                    id: speed
+                    id: obstacles
             
                 MDRaisedButton:
                     text: "Calculate"
