@@ -24,12 +24,16 @@ def remove_metadata_video(video_path, output_path):
         return False
 
 directory = os.path.dirname(os.path.realpath(__file__))
+processed_dir = os.path.join(directory, "processed")
+
+if not os.path.exists(processed_dir):
+    os.makedirs(processed_dir)
 
 for filename in os.listdir(directory):
     file_path = os.path.join(directory, filename)
     
     if os.path.isfile(file_path):
-        output_path = os.path.join(directory, "processed_" + filename)
+        output_path = os.path.join(processed_dir, filename)
 
         if filename.lower().endswith(('.png', '.jpg', '.jpeg')):
             if remove_metadata_image(file_path, output_path):
